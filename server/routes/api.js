@@ -5,12 +5,11 @@ const router = express.Router();
 
 const dbPath = path.join(__dirname, '../database/customers_1.db');
 
-// Helper function to open database connection
 const openDb = () => {
   return new sqlite3.Database(dbPath);
 };
 
-// Get all customers with pagination (should support searching, sorting, and pagination).
+
 router.get('/customers', (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
@@ -25,7 +24,6 @@ router.get('/customers', (req, res) => {
   let query = `SELECT * FROM customers`;
   let countQuery = `SELECT COUNT(*) as total FROM customers`;
   let params = [];
-  // Build WHERE clause with optional search and city filters
   let whereClauses = [];
   if (search) {
     whereClauses.push('(first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ? OR city LIKE ?)');
@@ -73,7 +71,7 @@ router.get('/customers', (req, res) => {
   db.close();
 });
 
-// Get a single customer by ID
+
 router.get('/customers/:id', (req, res) => {
   const db = openDb();
   
@@ -105,7 +103,7 @@ router.get('/customers/:id', (req, res) => {
   db.close();
 });
 
-// Create a new customer
+
 router.post('/customers', (req, res) => {
   const { first_name, last_name, phone_number,city } = req.body;
   console.log(req.body);
@@ -115,7 +113,7 @@ router.post('/customers', (req, res) => {
   }
   
   const db = openDb();
-  // Check if phone number already exists
+  
   db.get('SELECT id FROM customers WHERE phone_number = ?', [phone_number], (err, row) => {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -141,7 +139,7 @@ router.post('/customers', (req, res) => {
   db.close();
 });
 
-// Update a customer information
+
 router.put('/customers/:id', (req, res) => {
   const { first_name, last_name, phone_number, city } = req.body;
   // Basic validation
@@ -149,12 +147,11 @@ router.put('/customers/:id', (req, res) => {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
-  // Normalize phone to digits only for storage/comparison
   const normalizedPhone = String(phone_number).replace(/\D/g, '');
 
   const db = openDb();
 
-  // Check if phone number already exists for another customer
+
   db.get('SELECT id FROM customers WHERE phone_number = ? AND id != ?', [normalizedPhone, req.params.id], (err, row) => {
     if (err) {
       db.close();
@@ -165,7 +162,7 @@ router.put('/customers/:id', (req, res) => {
       return res.status(400).json({ error: 'Phone number already exists for another customer' });
     }
 
-    // Update customer
+
     const sql = `UPDATE customers SET first_name = ?, last_name = ?, phone_number = ?, city = ? WHERE id = ?`;
     db.run(sql, [first_name, last_name, normalizedPhone, city, req.params.id], function(err) {
       if (err) {
@@ -182,7 +179,7 @@ router.put('/customers/:id', (req, res) => {
   });
 });
 
-// Delete a customer
+
 router.delete('/customers/:id', (req, res) => {
   const db = openDb();
   
@@ -203,7 +200,6 @@ router.delete('/customers/:id', (req, res) => {
   db.close();
 });
 
-// Get addresses for a customer
 router.get('/customers/:id/addresses', (req, res) => {
   const db = openDb();
   
@@ -219,11 +215,10 @@ router.get('/customers/:id/addresses', (req, res) => {
   db.close();
 });
 
-// Add a new address for a customer
+
 router.post('/customers/:id/addresses', (req, res) => {
   const { address_details, city, state, pin_code } = req.body;
   console.log(req.body);
-  // Validation
   if (!address_details || !city || !state || !pin_code) {
     return res.status(400).json({ error: 'Address details, city, state, and pin code are required' });
   }
@@ -242,7 +237,6 @@ router.post('/customers/:id/addresses', (req, res) => {
   db.close();
 });
 
-// Update an address
 router.put('/addresses/:id', (req, res) => {
   const { address_details, city, state, pin_code } = req.body;
   // Validation
@@ -265,7 +259,6 @@ router.put('/addresses/:id', (req, res) => {
   db.close();
 });
 
-// Delete an address
 router.delete('/customers/:id', (req, res) => {
   db.run('DELETE FROM customers WHERE id = ?', [req.params.id], function(err) {
     if (err) {
