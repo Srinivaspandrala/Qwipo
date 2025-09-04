@@ -12,7 +12,7 @@ const initDatabase = () => {
       } else {
         console.log('Connected to SQLite database');
         
-        // Create customers table
+        
         db.run(`CREATE TABLE IF NOT EXISTS customers (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           first_name TEXT NOT NULL,
@@ -27,7 +27,7 @@ const initDatabase = () => {
           }
         });
         
-        // Create addresses table
+        
         db.run(`CREATE TABLE IF NOT EXISTS addresses (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           customer_id INTEGER NOT NULL,
