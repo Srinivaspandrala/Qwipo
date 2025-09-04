@@ -13,15 +13,9 @@
     --border-radius: 50px;
     --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     --transition: all 0.3s ease;
-    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary))
+}
 
-/* Clean UI overrides - minimal, neutral appearance */
-
-
-
-/* Remove CSS badge added earlier */
-
-/* Avatar: smaller, flat color */
 .customer-details-avatar {
     width: 48px;
     height: 48px;
@@ -32,23 +26,20 @@
     box-shadow: none;
 }
 
-/* Title: neutral color */
+
 .customer-details-title {
     font-weight: 700;
     text-transform: capitalize;
 }
 
-/* Buttons: flatter, no heavy gradients */
 
-/* Page title: simple color */
+
 
 @media (max-width: 480px) {
     .customer-details-avatar { width: 44px; height: 44px; }
     .customer-details-card { padding: 1rem; }
 }
-}
 
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -63,14 +54,14 @@ body {
     min-height: 100vh;
 }
 
-/* App Container */
+
 .app-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Header */
+
 .app-header {
     background: var(--gradient);
     color: white;
@@ -117,7 +108,7 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Main Content */
+
 .main-content {
     flex: 1;
     padding: 2rem;
@@ -141,7 +132,7 @@ body {
     color: var(--primary);
 }
 
-/* Card (Glassmorphism) */
+
 .card {
     background: var(--light);
     box-shadow: var(--box-shadow);
@@ -151,7 +142,7 @@ body {
     transition: var(--transition);
 }
 
-/* Enhanced card accent */
+
 .card {
     position: relative;
     overflow: hidden;
@@ -175,7 +166,7 @@ body {
     border-bottom: 1px solid var(--gray-light);
 }
 
-/* Customer details header tweaks */
+
 .customer-details-header-left {
     display: flex;
     align-items: center;
@@ -205,7 +196,7 @@ body {
     color: var(--primary);
 }
 
-/* Buttons */
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -239,7 +230,7 @@ body {
 }
 
 
-/* Modern button variants */
+
 .btn-primary {
     background: linear-gradient(90deg,var(--primary),var(--secondary));
     box-shadow: 0 8px 20px rgba(67,97,238,0.14);
@@ -257,7 +248,7 @@ body {
     color: white;
 }
 
-/* Dropdown Actions */
+
 .customer-details-actions-dropdown {
     position: relative;
     display: inline-block;
@@ -308,12 +299,12 @@ body {
     color: var(--primary);
 }
 
-/* subtle divider inside dropdown */
-.customer-details-actions-menu .dropdown-item + .dropdown-item { border-top: 1px solid rgba(0,0,0,0.04); }
 
-/* Customer detail rows */
+.customer-details-actions-menu .dropdown-item + .dropdown-item { 
+    border-top: 1px solid rgba(0,0,0,0.04); 
+}
 
-/* Address cards polish */
+
 .address-header {  
     display: flex;
     justify-content: space-between;
@@ -334,9 +325,8 @@ body {
     gap: 10px;
 }
 
-/* Page title accent */
 
-/* Small responsive improvements */
+
 @media (max-width: 480px) {
     .customer-details-avatar { width: 52px; height: 52px; font-size: 1.6rem; }
     .btn { padding: 0.6rem 0.9rem; font-size: 0.95rem; }
@@ -347,7 +337,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Customer Info Grid */
+
 .customer-details-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -371,7 +361,7 @@ body {
     font-size: 30px;
 }
 
-/* Table */
+
 .customer-table {
     width: 100%;
     border-collapse: collapse;
@@ -406,12 +396,12 @@ body {
     transition: var(--transition);
 }
 
-/* Forms */
+
 .form-group {
     margin-bottom: 1.5rem;
 }
 
-/* Two-input rows for forms: two columns on desktop, stacked on small screens */
+
 .form-row {
     display: flex;
     gap: 1rem;
@@ -458,7 +448,7 @@ body {
     display: block;
 }
 
-/* Search & Filter */
+
 .search-filter {
     display: flex;
     gap: 1rem;
@@ -481,7 +471,7 @@ body {
     background: #fff;
 }
 
-/* Pagination */
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -509,7 +499,7 @@ body {
     cursor: not-allowed;
 }
 
-/* Address Cards */
+
 .addresses {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -568,8 +558,6 @@ body {
 }
 
 
-
-/* Modal */
 .address-form-modal {
     display: flex;
     justify-content: center;
@@ -599,8 +587,6 @@ body {
     padding: 1.4rem;
 }
 
-
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -610,7 +596,6 @@ body {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Footer */
 .app-footer {
     background: var(--dark);
     color: white;
@@ -619,7 +604,6 @@ body {
     margin-top: auto;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
