@@ -9,7 +9,6 @@ import { FaPenSquare, FaPlus, FaTimes } from 'react-icons/fa';
                 city: customer?.city || ''
             });
 
-            // Keep form in sync when editing an existing customer and data arrives asynchronously
             useEffect(() => {
                 setFormData({
                     first_name: customer?.first_name || '',
@@ -19,18 +18,16 @@ import { FaPenSquare, FaPlus, FaTimes } from 'react-icons/fa';
                 });
             }, [customer]);
             
-            // no validation/errors state - form submits as-is
+        
             
             const handleChange = (e) => {
                 const { name, value } = e.target;
                 setFormData(prev => ({ ...prev, [name]: value }));
             };
             
-            // Validation removed by request. Form will submit payload as-is.
             
             const handleSubmit = (e) => {
                 e.preventDefault();
-                // No client-side validation: submit payload as-is
                 const payload = {
                     first_name: formData.first_name,
                     last_name: formData.last_name,
