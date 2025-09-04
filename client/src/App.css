@@ -409,7 +409,7 @@ body {
 }
 .form-row .form-group {
     flex: 1 1 0;
-    min-width: 0; /* allow inputs to shrink properly */
+    min-width: 0; 
 }
 @media (max-width: 700px) {
     .form-row { flex-direction: column; }
@@ -563,10 +563,9 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    background: transparent; /* no dark overlay */
-    padding: 1rem; /* keeps modal away from edges on small screens */
+    padding: 1rem;
     animation: fadeIn 0.15s ease;
-    overflow-y: auto; /* allow scrolling when modal content exceeds viewport */
+    overflow-y: auto; 
 }
 
 .modal-content {
