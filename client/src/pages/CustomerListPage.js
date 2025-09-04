@@ -22,11 +22,10 @@ import { FaUserPlus } from 'react-icons/fa';
                             page: searchParams.page || 1,
                             search: searchParams.search || '',
                             city: searchParams.city || ''
-                            // limit can be sent if you want to override server default
-                            // limit: pagination.limit,
+                            
                         };
                         const response = await axios.get('http://qwipo-server-env-1.eba-9mktppp9.ap-south-1.elasticbeanstalk.com/api/customers', { params });
-                            // server returns { customers, pagination }
+                            
                             const respCustomers = response.data.customers || [];
                             const respPagination = response.data.pagination || { current: params.page, total: 1, limit: 10, totalRecords: 0 };
                             setCustomers(respCustomers);
