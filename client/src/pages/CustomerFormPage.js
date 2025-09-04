@@ -43,7 +43,6 @@ import { FaArrowLeft } from 'react-icons/fa6';
                             customer={customer}
                             isEdit={isEdit}
                             onSave={async (formData) => {
-                                    // Show saving overlay when creating a new customer
                                     try {
                                         if (isEdit) {
                                             await axios.put(`http://qwipo-server-env-1.eba-9mktppp9.ap-south-1.elasticbeanstalk.com/api/customers/${id}`, formData);
